@@ -29,5 +29,9 @@ namespace TicketingSystem.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<TicketingSystem.Models.Ticket> Tickets { get; set; }
+
+        public System.Data.Entity.DbSet<TicketingSystem.Models.Message> Messages { get; set; }
     }
 }
