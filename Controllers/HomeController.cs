@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TicketingSystem.Models;
 
 namespace TicketingSystem.Controllers
 {
-    [Authorize]
     public class HomeController : Controller
     {
+        private TicketsContext db = new TicketsContext();
+
+        [Authorize]
         public ActionResult Index()
         {
-            return View();
+            //select tickets of this user, or if importand one all open tickets
+            return View(db.Tickets.ToList());
         }
 
         public ActionResult About()
