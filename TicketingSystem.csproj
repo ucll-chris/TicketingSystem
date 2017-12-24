@@ -203,6 +203,7 @@
     <Compile Include="Models\Message.cs" />
     <Compile Include="Models\TicketsContext.cs" />
     <Compile Include="Models\Ticket.cs" />
+    <Compile Include="Models\TicketsInitializer.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\User_right.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

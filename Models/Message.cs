@@ -14,15 +14,15 @@ namespace TicketingSystem.Models
         public int Id { get; set; }
 
         [Required]
-        [ForeignKey("Ticket_id")]
+        [ForeignKey("TicketId")]
         public virtual Ticket Ticket { get; set; }
-        public int Ticket_id { get; set; }
+        public int TicketId { get; set; }
 
-        [Required]
-        [ForeignKey("User_id")]
-        public virtual User User { get; set; }
-        public int User_id { get; set; }
-    
+        //[Required]
+        //ForeignKey("UserId")]
+        //public virtual User User { get; set; }
+        //public int UserId { get; set; }
+ 
         [Required]
         public String Text { get; set; }
    

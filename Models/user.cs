@@ -21,5 +21,8 @@ namespace TicketingSystem.Models
         public String Email { get; set; }
         [Required]
         public User_rights User_rights { get; set; }
+
+        public virtual List<Ticket> Tickets { get; set; }
+        //public virtual List<Message> Messages { get; set; }
     }
 }
