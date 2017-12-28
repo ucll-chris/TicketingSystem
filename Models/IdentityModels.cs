@@ -33,5 +33,7 @@ namespace TicketingSystem.Models
         public System.Data.Entity.DbSet<TicketingSystem.Models.Ticket> Tickets { get; set; }
 
         public System.Data.Entity.DbSet<TicketingSystem.Models.Message> Messages { get; set; }
+
+        public System.Data.Entity.DbSet<TicketingSystem.Models.User> Users1 { get; set; }
     }
 }

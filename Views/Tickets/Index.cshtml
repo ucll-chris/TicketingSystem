@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<TicketingSystem.Models.Ticket>
 
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Index";
 }
 
-<h1>Your Tickets</h1>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New Ticket", "../Tickets/Create")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
@@ -68,3 +68,4 @@
     }
 
 </table>
+

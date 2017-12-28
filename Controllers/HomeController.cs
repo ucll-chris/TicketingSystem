@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,13 +10,15 @@ namespace TicketingSystem.Controllers
 {
     public class HomeController : Controller
     {
-        private TicketsContext db = new TicketsContext();
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         [Authorize]
         public ActionResult Index()
         {
             //select tickets of this user, or if admin, all open tickets
-            return View(); //nu geeft hij hier een fout
+            var tickets = db.Tickets.Include(t => t.User);
+            return View(tickets.ToList());
+            return View();
         }
 
         public ActionResult About()

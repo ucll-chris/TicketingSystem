@@ -7,7 +7,8 @@ using System.Linq;
 using System.Web;
 
 namespace TicketingSystem.Models
-{
+{  //vecht soms met ApplicationDbContext, dus verwijderen ?
+
     public class TicketsContext : IdentityDbContext<User>
     {
         //public virtual IDbSet<ApplicationUser> Users { get; set; } //al in IdentityDbContext
