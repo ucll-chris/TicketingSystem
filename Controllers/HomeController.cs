@@ -14,8 +14,8 @@ namespace TicketingSystem.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            //select tickets of this user, or if importand one all open tickets
-            return View(db.Tickets.ToList());
+            //select tickets of this user, or if admin, all open tickets
+            return View(); //nu geeft hij hier een fout
         }
 
         public ActionResult About()

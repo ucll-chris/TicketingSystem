@@ -27,15 +27,14 @@ namespace TicketingSystem.Models
         public bool Finished { get; set; }
 
         [Required]
-        //[ForeignKey("User_id")] //we gaan fluent API gebruiken -> ticketContext
+        [ForeignKey("UserId")] //kunnen ook fluent API gebruiken -> ticketContext
         public virtual User User { get; set; }
-        public int UserId { get; set; }
- 
-        //[ForeignKey("Assigned_to_id")]
-        public virtual User AssigendTo{ get; set; }
-        public int? AssignedToId { get; set; }
+        public string UserId { get; set; }
 
-        //voor messsages in
-        public virtual List<Message> Messages { get; set; }
+        [ForeignKey("AssignedToId")]
+        public virtual User AssigendTo{ get; set; }
+        public string AssignedToId { get; set; }
+
+        public virtual ICollection<Message> Messages { get; set; }
     }
 }

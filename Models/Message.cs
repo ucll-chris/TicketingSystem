@@ -18,11 +18,13 @@ namespace TicketingSystem.Models
         public virtual Ticket Ticket { get; set; }
         public int TicketId { get; set; }
 
-        //[Required]
-        //ForeignKey("UserId")]
-        //public virtual User User { get; set; }
-        //public int UserId { get; set; }
- 
+        //[Required] //echt ?? required is de rede ????
+        [ForeignKey("CreatorId")]
+        public virtual User Creator { get; set; }
+        public string CreatorId { get; set; }
+        //gaat nie, want Introducing FOREIGN KEY constraint 'FK_dbo.Tickets_dbo.Users_UserId' on table 'Tickets' may cause cycles or multiple cascade paths. Specify ON DELETE NO ACTION or ON UPDATE NO ACTION, or modify other FOREIGN KEY constraints.
+        //Could not create constraint or index.See previous errors. 
+
         [Required]
         public String Text { get; set; }
    

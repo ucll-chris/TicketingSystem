@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -7,43 +8,33 @@ using System.Web;
 
 namespace TicketingSystem.Models
 {
-    public class TicketsContext : DbContext
+    public class TicketsContext : IdentityDbContext<User>
     {
-        public DbSet<Ticket> Users { get; set; }
-        public DbSet<Ticket> Tickets { get; set; }
-        public DbSet<Message> Messages { get; set; }
+        //public virtual IDbSet<ApplicationUser> Users { get; set; } //al in IdentityDbContext
+        public virtual IDbSet<Ticket> Tickets { get; set; }
+        public virtual IDbSet<Message> Messages { get; set; }
+
+        public TicketsContext() : base("DefaultConnection", throwIfV1Schema: false)
+        { }
+
+        public static TicketsContext Create()
+        {
+            return new TicketsContext();
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 
-            //Why O why !!!!!!
-
-            //to prevent error:
-            //Introducing FOREIGN KEY constraint 'FK_dbo.Tickets_dbo.Users_Assigned_to_id' on table 'Tickets' may cause cycles or multiple cascade paths.Specify ON DELETE NO ACTION or ON UPDATE NO ACTION, or modify other FOREIGN KEY constraints.
-            //Could not create constraint or index. See previous errors.
             modelBuilder.Entity<Ticket>()
                     .HasRequired(s => s.User)
                     .WithMany()
-                    .HasForeignKey(n => n.UserId)
                     .WillCascadeOnDelete(false);
+ 
 
-           modelBuilder.Entity<Ticket>()
-                    .HasRequired(s => s.AssigendTo)
-                    .WithMany()
-                    .HasForeignKey(n => n.AssignedToId)
-                    .WillCascadeOnDelete(false);
-
-            //probleem zat dus nie in Ticket,maar in messages
-            //ik snap het niet
-            /*modelBuilder.Entity<Message>()
-                    .HasRequired(s => s.User)
-                    .WithMany()
-                    .HasForeignKey(n => n.UserId)
-                    .WillCascadeOnDelete(false);
-            */
             base.OnModelCreating(modelBuilder);
         }
     }
 }
+ 
