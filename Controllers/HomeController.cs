@@ -18,7 +18,6 @@ namespace TicketingSystem.Controllers
             //select tickets of this user, or if admin, all open tickets
             var tickets = db.Tickets.Include(t => t.User);
             return View(tickets.ToList());
-            return View();
         }
 
         public ActionResult About()
