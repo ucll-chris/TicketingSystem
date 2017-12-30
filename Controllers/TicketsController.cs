@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using TicketingSystem.Models;
 
 namespace TicketingSystem.Controllers
@@ -39,8 +41,6 @@ namespace TicketingSystem.Controllers
         // GET: Tickets/Create
         public ActionResult Create()
         {
-            ViewBag.AssignedToId = new SelectList(db.Users, "Id", "Email");
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email");
             return View();
         }
 
@@ -49,8 +49,15 @@ namespace TicketingSystem.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Start_date,End_date,Urgency,Finished,UserId,AssignedToId")] Ticket ticket)
+        public ActionResult Create([Bind(Include = "Id,Name,Description,Start_date,End_date,Urgency,Finished,UserId,AssignedToId")] Ticket ticket)
         {
+            //userid id is current user
+            //ticket.UserId = Membership.GetUser().ProviderUserKey.ToString();
+            ticket.UserId= System.Web.HttpContext.Current.User.Identity.GetUserId();
+
+            //start date is current date
+            ticket.Start_date = DateTime.Now;
+
             if (ModelState.IsValid)
             {
                 db.Tickets.Add(ticket);

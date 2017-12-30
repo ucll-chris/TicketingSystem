@@ -197,10 +197,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712281149314_InitialCreate.cs" />
-    <Compile Include="Migrations\201712281149314_InitialCreate.Designer.cs">
-      <DependentUpon>201712281149314_InitialCreate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201712292110264_seedUsers.cs" />
     <Compile Include="Migrations\201712292110264_seedUsers.Designer.cs">
       <DependentUpon>201712292110264_seedUsers.cs</DependentUpon>
@@ -300,9 +296,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712281149314_InitialCreate.resx">
-      <DependentUpon>201712281149314_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712292110264_seedUsers.resx">
       <DependentUpon>201712292110264_seedUsers.cs</DependentUpon>
     </EmbeddedResource>

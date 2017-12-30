@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AssigendTo.Email)
+            Assigned to
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.User.Email)
+            Owner
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
@@ -28,9 +28,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Urgency)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Finished)
         </th>
         <th></th>
     </tr>
@@ -55,9 +52,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Urgency)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Finished)
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |

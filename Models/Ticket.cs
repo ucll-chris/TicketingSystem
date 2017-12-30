@@ -17,6 +17,9 @@ namespace TicketingSystem.Models
         public String Name { get; set; }
 
         [Required]
+        public String Description { get; set; }
+
+        [Required]
         public DateTime Start_date { get; set; }
 
         public DateTime End_date { get; set; }
