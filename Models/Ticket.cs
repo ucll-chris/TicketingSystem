@@ -25,7 +25,7 @@ namespace TicketingSystem.Models
         public DateTime End_date { get; set; }
 
         [Required]
-        public int Urgency { get; set; }
+        public Priority Urgency { get; set; }
 
         public bool Finished { get; set; }
 

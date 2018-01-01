@@ -53,20 +53,22 @@ namespace TicketingSystem.Controllers
         {
             //userid id is current user
             //ticket.UserId = Membership.GetUser().ProviderUserKey.ToString();
-            ticket.UserId= System.Web.HttpContext.Current.User.Identity.GetUserId();
+            ticket.UserId = System.Web.HttpContext.Current.User.Identity.GetUserId();
+            ticket.AssignedToId = "65cfe62f-64a1-4a9c-bfd9-7902735e3679"; //still not working
 
             //start date is current date
             ticket.Start_date = DateTime.Now;
+            ticket.End_date = DateTime.Now.AddDays(10); //+10 dagen; zou op urgency moeten gebaseerd zijn
 
             if (ModelState.IsValid)
-            {
+            {   //not adding why? not vallid ?
                 db.Tickets.Add(ticket);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AssignedToId = new SelectList(db.Users, "Id", "Email", ticket.AssignedToId);
-            ViewBag.UserId = new SelectList(db.Users, "Id", "Email", ticket.UserId);
+            //ViewBag.AssignedToId = new SelectList(db.Users, "Id", "Email", ticket.AssignedToId);
+            //ViewBag.UserId = new SelectList(db.Users, "Id", "Email", ticket.UserId);
             return View(ticket);
         }
 
